@@ -72,6 +72,7 @@ router.put('/register', async (req, res, next) => {
   const email = req.query.email || req.body.email;
   const graduationRaw = req.query.graduation || req.body.graduation;
   const graduation = parseInt(graduationRaw, 10);
+  const degree = req.query.degree || req.body.degree;
 
   if (!name || !email || Number.isNaN(graduation)) {
     return res
@@ -92,7 +93,7 @@ router.put('/register', async (req, res, next) => {
       sid: nextSid,
       name,
       email,
-      degree: 'Unknown',
+      degree,
       graduation,
     });
 
